@@ -1,31 +1,32 @@
 const express = require("express");
-const { get } = require("mongoose");
 const router = express.Router();
 
-//All workouts
-router.get("/", (req, res) => {
-  res.json({ message: "All workouts" });
-});
+//Models
+const Workout = require("../models/workoutModel");
+
+//Controllers
+const {
+  createWorkout,
+  getWorkout,
+  getWorkouts,
+  updateWorkout,
+  deleteWorkout,
+} = require("../controllers/workoutController");
+
+//Get all workouts
+router.get("/", getWorkouts);
 
 //Get a single workout
-router.get("/:id", (req, res) => {
-  res.json({ message: "Get a single workout" });
-});
+router.get("/:id", getWorkout);
 
 //Create a new workout
-router.post("/", (req, res) => {
-  res.json({ message: "New workout" });
-});
+router.post("/", createWorkout);
 
 //Update a workout
-router.patch("/:id", (req, res) => {
-  res.json({ message: "Update workout" });
-});
+router.patch("/:id", updateWorkout);
 
 //Delete a workout
-router.delete("/:id", (req, res) => {
-  res.json({ message: "Delete workout" });
-});
+router.delete("/:id", deleteWorkout);
 
 router.get("/", (req, res) => {});
 

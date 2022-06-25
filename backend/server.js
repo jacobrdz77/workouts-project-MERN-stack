@@ -11,7 +11,7 @@ const workoutRoutes = require("./routes/workoutRoutes");
 app.use(express.json());
 
 //Routes
-app.use("/workout", workoutRoutes);
+app.use("/api/workouts", workoutRoutes);
 
 //Connect to Database and listen to port
 mongoose
