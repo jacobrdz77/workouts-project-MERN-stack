@@ -1,1 +1,1 @@
-# workouts-project-MERN-stack
+# Workout Manager with MERN stack
