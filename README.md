@@ -1,7 +1,8 @@
 # Workout Manager 
 A workout manager that allows you to create, read, update, delete a workout from the database.
 ## Tech Stack
-![workouts-tech-stack](https://user-images.githubusercontent.com/70309225/182762020-afd30211-b6fb-42c1-8dcd-f9bc02fdfa91.png)
+![workouts-mern](https://user-images.githubusercontent.com/70309225/183312642-f1133cf7-cf44-4b6f-8632-a808d19cef0c.png)
+
 
 ## Features
 - CCRUD functionality for workouts.
