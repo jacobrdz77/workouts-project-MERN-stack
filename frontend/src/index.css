@@ -1,8 +1,87 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap");
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+ul {
+  list-style: none;
+}
 
 :root {
-  --primary: #1aac83;
-  --error: #e7195a;
+  --primary: #52c964;
+  --error: #e7192e;
+  --error-hover: #bf1f52;
 }
 
 body {
@@ -35,21 +114,34 @@ header a {
   margin: 0 auto;
 }
 
+.date {
+  letter-spacing: 0.5px;
+}
+
 /* homepage */
 
 .home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.workouts {
+  flex-grow: 1;
+  max-width: 900px;
 }
 
 .workout-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
 .workout-details h4 {
@@ -75,7 +167,27 @@ header a {
   color: #333;
 }
 
+.delete-button {
+  font-size: 14px;
+  padding: 5px 5px;
+  background: var(--error);
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+}
+
+.delete-button:hover {
+  background-color: var(--error-hover);
+  cursor: pointer;
+}
+
 /* new workout form */
+
+.create {
+  max-width: 224px;
+  flex-grow: 0;
+}
+
 label,
 input {
   display: block;
@@ -100,6 +212,11 @@ form button {
   cursor: pointer;
 }
 
+form button:hover {
+  transform: scale(1.03);
+  transition: all 0.1s ease-in-out;
+}
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -107,4 +224,11 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
 }

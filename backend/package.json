@@ -8,11 +8,15 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jacob Rodriguez",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

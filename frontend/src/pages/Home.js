@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 // components
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
+import NoWorkouts from "../components/NoWorkouts";
 
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
+  const [animationParent] = useAutoAnimate();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      //The fetch to the endpoint only works for development.
       //! Make sure that every requests points to the correct endpoints in development. */
       const response = await fetch("/api/workouts");
       const json = await response.json();
@@ -19,17 +22,22 @@ const Home = () => {
         dispatch({ type: "SET_WORKOUTS", payload: json });
       }
     };
+
     fetchWorkouts();
-  }, [dispatch]);
+  }, [dispatch, workouts]);
 
   return (
     <div className="home">
-      <div className="workouts">
-        {workouts &&
-          workouts.map((workout) => (
-            <WorkoutDetails key={workout._id} workout={workout} />
-          ))}
-      </div>
+      {workouts && workouts.length === 0 && <NoWorkouts />}
+
+      {workouts && workouts.length > 0 && (
+        <ul className="workouts" ref={animationParent}>
+          {workouts &&
+            workouts.map((workout) => (
+              <WorkoutDetails key={workout._id} workout={workout} />
+            ))}
+        </ul>
+      )}
       <WorkoutForm />
     </div>
   );
