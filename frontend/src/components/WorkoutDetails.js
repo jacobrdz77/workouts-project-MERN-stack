@@ -1,15 +1,11 @@
-import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useState } from "react";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
 
-  const createdAt = new Date();
-
-  const [isDeleted, setIsDeleted] = useState(false);
 
   const deleteHandler = async (e) => {
-    setIsDeleted(true);
     e.preventDefault();
 
     const response = await fetch("/api/workouts/" + workout._id, {
@@ -35,7 +31,7 @@ const WorkoutDetails = ({ workout }) => {
           <strong>Reps: </strong>
           {workout.reps}
         </p>
-        <p className="date">{createdAt.toLocaleTimeString()}</p>
+        <p className="date">{workout.createdAt.toLocaleString()}</p>
       </li>
       <div>
         <button onClick={deleteHandler} className="delete-button">
