@@ -7,6 +7,7 @@ const cors = require("cors");
 const app = express();
 
 const workoutRoutes = require("./routes/workoutRoutes");
+const userRoutes = require('./routes/user')
 
 //Parse data
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(cors());
 
 //Routes
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes)
 //Connect to Database and listen to port
 mongoose
   .connect(process.env.MONGO_URI)
